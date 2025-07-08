@@ -1,15 +1,21 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import Models.Book;
+import Models.EBook;
+import Models.PaperBook;
+import Models.ShowcaseBook;
+import Services.InventoryService;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Book p1 = new PaperBook("PB001", "Clean Code", 2010, 45.0f, "Robert C. Martin", 10);
+        Book p2 = new EBook("EB001", "You Don’t Know JS", 2019, 25.0f, "Kyle Simpson", "PDF");
+        Book p3 = new ShowcaseBook("SB001", "Quantum Architecture", 2000, 0.0f, "Ahmed Amr");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        InventoryService.addBook(p1);
+        InventoryService.addBook(p2);
+        InventoryService.addBook(p3);
+
+        InventoryService.buyBook("PB001", 2, "aamr24987@gmail.com", "Elzyton, Cairo");
+        InventoryService.buyBook("EB001", 1, "aamr24987@gmail.com", "Dokki, Giza");
+        InventoryService.removeOutdatedBooks(20);
     }
 }
